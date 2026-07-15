@@ -1,12 +1,19 @@
-#include <numeric> // Required for std::gcd
-
 class Solution {
 public:
-    int gcdOfOddEvenSums(int n) {
-        long long sumOdd = 0;
-        long long sumEven = 0;
+    int gcd(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
 
-        // The first n odd and even numbers fall within the range 1 to 2*n
+    int gcdOfOddEvenSums(int n) {
+        int sumOdd = 0;
+        int sumEven = 0;
+        
+        // Loop to process the first n odd and n even elements (total 2*n numbers)
         for (int i = 1; i <= 2 * n; i++) {
             if (i % 2 == 0) {
                 sumEven += i;
@@ -14,8 +21,8 @@ public:
                 sumOdd += i;
             }
         }
-
-        // Compute GCD using modern standard library features
-        return std::gcd(sumOdd, sumEven);
+        
+        // Added the missing return keyword
+        return gcd(sumOdd, sumEven); 
     }
 };
