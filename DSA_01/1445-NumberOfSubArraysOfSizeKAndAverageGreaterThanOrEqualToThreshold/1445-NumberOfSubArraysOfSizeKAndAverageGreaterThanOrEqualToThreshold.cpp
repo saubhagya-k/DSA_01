@@ -1,0 +1,47 @@
+// Last updated: 05/08/2026, 16:53:34
+class Solution {
+public:
+    int numOfSubarrays(vector<int>& arr, int k, int threshold) {
+
+        int n = arr.size();
+
+        long long avg = 0;
+        int count = 0;
+
+        // int maxAvg = threshold;
+        long long sum = 0;
+
+        for(int i=0;i<k;i++){
+
+            sum += arr[i];
+
+        }
+        avg = sum/k;
+        if(avg>=threshold){
+            count++;
+
+            // maxAvg = avg;
+        }
+
+        for(int i=k;i<n;i++){
+
+            sum = sum+arr[i]-arr[i-k];
+
+            avg = sum/k;
+
+            if(avg>=threshold){
+                count++;
+            }
+
+           
+
+        }
+
+        return count;
+
+    
+
+
+        
+    }
+};
