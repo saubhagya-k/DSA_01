@@ -1,0 +1,19 @@
+// Last updated: 08/09/2026, 11:32:48
+#include <string>
+#include <algorithm>
+
+class Solution {
+public:
+    int minimumPushes(std::string word) {
+        int n = word.length();
+        int totalPushes = 0;
+        
+       
+        for (int i = 0; i < n; ++i) {
+            
+            totalPushes += (i / 8) + 1;
+        }
+        
+        return totalPushes;
+    }
+};
